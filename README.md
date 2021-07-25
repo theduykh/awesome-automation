@@ -5,11 +5,56 @@ An automation framework based on TestNG and Cucumber
 - Java JDK 8
 - Maven 3
 - Lombok & Cucumber plugin for IDE
-- Selenium grid run on http://localhost:4444/wd/hub/
-- Allure commandline or any web service for publishing test report
+- Selenium grid runs on http://localhost:4444/wd/hub/ with a Google Chrome node
+- Allure commandline or any web service for publishing test report in `allure-report` folder
     - Allure install: https://docs.qameta.io/allure/#_installing_a_commandline
     - Web Server for Chrome: https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb
 
 ## Execute
 Run command `mvn test`
 
+## Structure
+```
+src
+ ┣ main
+ ┃ ┣ java
+ ┃ ┃ ┗ org
+ ┃ ┃ ┃ ┗ theduykh
+ ┃ ┃ ┃ ┃ ┗ ata
+ ┃ ┃ ┃ ┃ ┃ ┣ driver
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ AtaDriver.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ AtaDriverManager.java
+ ┃ ┃ ┃ ┃ ┃ ┣ listener
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ AtaAllureMethodListener.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ AtaSuiteListener.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ AtaTestListener.java
+ ┃ ┃ ┃ ┃ ┃ ┗ test
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ AtaBase.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ AtaCucumberStepContext.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ AtaCucumberStepDefinition.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ AtaPage.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ AtaTest.java
+ ┃ ┗ resources
+ ┃ ┃ ┣ META-INF
+ ┃ ┃ ┃ ┣ services
+ ┃ ┃ ┃ ┃ ┗ org.testng.ITestNGListener
+ ┃ ┃ ┃ ┗ aop-ajc.xml
+ ┃ ┃ ┗ log4j2.xml
+ ┗ test
+ ┃ ┣ java
+ ┃ ┃ ┣ entities
+ ┃ ┃ ┃ ┣ CartEntity.java
+ ┃ ┃ ┃ ┣ ItemEntity.java
+ ┃ ┃ ┃ ┗ ProductEntity.java
+ ┃ ┃ ┣ pages
+ ┃ ┃ ┃ ┣ CartPage.java
+ ┃ ┃ ┃ ┣ HomePage.java
+ ┃ ┃ ┃ ┗ ProductPage.java
+ ┃ ┃ ┣ stepdefinition
+ ┃ ┃ ┃ ┗ AmazonStepDefinition.java
+ ┃ ┃ ┗ CucumberRunner.java
+ ┃ ┗ resources
+ ┃ ┃ ┣ features
+ ┃ ┃ ┃ ┗ Amazon.feature
+ ┃ ┃ ┗ cucumber.properties
+```

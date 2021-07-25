@@ -19,7 +19,7 @@ import java.util.*;
 
 public class AtaDriver {
     private final Logger logger = LogManager.getLogger(AtaDriver.class);
-    private MutableCapabilities defaultCapabilities;
+    private final MutableCapabilities defaultCapabilities;
     private RemoteWebDriver driver;
     private final Map<String, RemoteWebDriver> driverMap = new HashMap<>();
 

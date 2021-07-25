@@ -7,10 +7,10 @@ public class AtaDriverManager {
     private static final Logger logger = LogManager.getLogger(AtaDriverManager.class);
     protected static ThreadLocal<AtaDriver> threadDriver = new ThreadLocal<>();
 
-    public static AtaDriver init() {
+    public static void init() {
         threadDriver.set(new AtaDriver());
         logger.debug("init thread driver");
-        return threadDriver.get();
+        threadDriver.get();
     }
 
     public static void quit() {

@@ -18,8 +18,8 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
 
-public class AmazonStepDefinitionDefinition extends AtaCucumberStepDefinition {
-    public AmazonStepDefinitionDefinition(AtaCucumberStepContext context) {
+public class AmazonStepDefinition extends AtaCucumberStepDefinition {
+    public AmazonStepDefinition(AtaCucumberStepContext context) {
         super(context);
     }
 

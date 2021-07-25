@@ -13,6 +13,12 @@ An automation framework based on TestNG and Cucumber
 ## Execute
 Run command `mvn test`
 
+## Report
+- There will be a `test-result` folder created after the test is completed.
+- Use Allure to generate reports by command `allure generate`
+- Open the report in `test-report` by command  `allure open`
+- Or simply run the command `allure serve`
+
 ## Structure
 ```
 src

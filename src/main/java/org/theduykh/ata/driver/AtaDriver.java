@@ -20,8 +20,8 @@ import java.util.*;
 public class AtaDriver {
     private final Logger logger = LogManager.getLogger(AtaDriver.class);
     private final MutableCapabilities defaultCapabilities;
-    private RemoteWebDriver driver;
-    private final Map<String, RemoteWebDriver> driverMap = new HashMap<>();
+    private WebDriver driver;
+    private final Map<String, WebDriver> driverMap = new HashMap<>();
 
     private final long TIMEOUT = 10;
 
@@ -127,6 +127,11 @@ public class AtaDriver {
         return this;
     }
 
+    public AtaValidation see(By locator) {
+        logger.debug("see " + locator);
+        return new AtaValidation(driver, locator);
+    }
+
     public AtaDriver waitFor(long time) {
         try {
             Thread.sleep(time);
@@ -179,7 +184,6 @@ public class AtaDriver {
             return false;
         }
     }
-
 
     private By parseLocator(String locator) {
         String temp = locator;

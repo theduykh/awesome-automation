@@ -8,7 +8,9 @@ public class AtaTestListener implements ITestListener {
 
     @Override
     public void onTestStart(ITestResult result) {
-        AtaDriverManager.init();
+        if (AtaDriverManager.getDriver() == null) {
+            AtaDriverManager.init();
+        }
     }
 
     @Override

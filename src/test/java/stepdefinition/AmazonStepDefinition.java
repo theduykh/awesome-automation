@@ -7,6 +7,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.theduykh.ata.test.AtaCucumberStepDefinition;
 import org.theduykh.ata.test.AtaCucumberStepContext;
@@ -134,6 +135,7 @@ public class AmazonStepDefinition extends AtaCucumberStepDefinition {
     @Then("the system requires a login")
     public void theSystemRequiresALogin() {
         I.see("Sign-In");
+        I.see(By.cssSelector("#login-form")).display();
     }
 
 

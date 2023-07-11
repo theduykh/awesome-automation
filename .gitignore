@@ -23,7 +23,8 @@
 hs_err_pid*
 
 /.idea/
-/awesome-test-automation.iml
+/awesome-automation.iml
 /allure-report/
 /allure-results/
 /test-logs/
+/target/

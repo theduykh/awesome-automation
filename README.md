@@ -2,13 +2,11 @@
 An automation framework based on TestNG and Cucumber
 
 ## Setup
-- Java JDK 8
+- Java JDK 17
 - Maven 3
 - Lombok & Cucumber plugin for IDE
-- Selenium grid runs on http://localhost:4444/wd/hub/ with a Google Chrome node
 - Allure commandline or any web service for publishing test report in `allure-report` folder
     - Allure install: https://docs.qameta.io/allure/#_installing_a_commandline
-    - Web Server for Chrome: https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb
 
 ## Execute
 Run command `mvn test`
@@ -31,7 +29,6 @@ src
  ┃ ┃ ┃ ┃ ┃ ┃ ┣ AtaDriver.java
  ┃ ┃ ┃ ┃ ┃ ┃ ┗ AtaDriverManager.java
  ┃ ┃ ┃ ┃ ┃ ┣ listener
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ AtaAllureMethodListener.java
  ┃ ┃ ┃ ┃ ┃ ┃ ┣ AtaSuiteListener.java
  ┃ ┃ ┃ ┃ ┃ ┃ ┗ AtaTestListener.java
  ┃ ┃ ┃ ┃ ┃ ┗ test

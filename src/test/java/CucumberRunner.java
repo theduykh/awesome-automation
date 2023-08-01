@@ -3,7 +3,7 @@ import io.cucumber.testng.CucumberOptions;
 import org.testng.annotations.DataProvider;
 
 @CucumberOptions(features = "src/test/resources/features/Amazon.feature",
-        plugin = {"io.qameta.allure.cucumber6jvm.AllureCucumber6Jvm","pretty"})
+        plugin = {"io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm", "pretty"})
 public class CucumberRunner extends AbstractTestNGCucumberTests {
 
     @Override

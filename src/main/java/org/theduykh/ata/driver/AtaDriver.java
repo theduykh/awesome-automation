@@ -5,9 +5,8 @@ import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -15,6 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.io.ByteArrayInputStream;
+import java.time.Duration;
 import java.util.*;
 
 public class AtaDriver {
@@ -36,7 +36,7 @@ public class AtaDriver {
         chromeOptions.setExperimentalOption("useAutomationExtension", false);
         chromeOptions.setAcceptInsecureCerts(true);
         defaultCapabilities = chromeOptions;
-        driver = new RemoteWebDriver(defaultCapabilities);
+        driver = new ChromeDriver(chromeOptions);
         driverMap.put("default", driver);
     }
 
@@ -91,7 +91,7 @@ public class AtaDriver {
         logger.debug("click " + locator);
         step(() -> {
             By parsedLocator = parseLocator(locator);
-            WebDriverWait wait = new WebDriverWait(driver, TIMEOUT, 500);
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(TIMEOUT), Duration.ofMillis(500));
             wait.until(ExpectedConditions.elementToBeClickable(parsedLocator));
             driver.findElement(parsedLocator).click();
         });
@@ -156,7 +156,7 @@ public class AtaDriver {
 
     public WebElement findElement(String locator) {
         By parsedLocator = parseLocator(locator);
-        WebDriverWait wait = new WebDriverWait(driver, TIMEOUT, 500);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(TIMEOUT), Duration.ofMillis(500));
         wait.until(ExpectedConditions.visibilityOfElementLocated(parsedLocator));
         return driver.findElement(parsedLocator);
     }
@@ -164,7 +164,7 @@ public class AtaDriver {
     public List<WebElement> findElements(String locator) {
         By parsedLocator = parseLocator(locator);
         try {
-            WebDriverWait wait = new WebDriverWait(driver, TIMEOUT, 500);
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(TIMEOUT), Duration.ofMillis(500));
             wait.until(ExpectedConditions.visibilityOfElementLocated(parsedLocator));
         } catch (WebDriverException e) {
             return new ArrayList<>();
@@ -177,7 +177,7 @@ public class AtaDriver {
     private boolean isElementVisible(String locator, long timeout) {
         By parsedLocator = parseLocator(locator);
         try {
-            WebDriverWait wait = new WebDriverWait(driver, timeout, 500);
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(TIMEOUT), Duration.ofMillis(500));
             wait.until(ExpectedConditions.visibilityOfElementLocated(parsedLocator));
             return true;
         } catch (Exception e) {
@@ -206,18 +206,6 @@ public class AtaDriver {
         } finally {
             Allure.addAttachment("screenshot", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
         }
-    }
-
-    private MutableCapabilities fireFoxCapability() {
-        MutableCapabilities capabilities = new FirefoxOptions();
-        capabilities.setCapability("seleniumHost", "http://localhost:4444/wd/hub/");
-        return capabilities;
-    }
-
-    private MutableCapabilities chromeCapability() {
-        MutableCapabilities capabilities = DesiredCapabilities.chrome();
-        capabilities.setCapability("seleniumHost", "http://localhost:4444/wd/hub/");
-        return capabilities;
     }
 
 }

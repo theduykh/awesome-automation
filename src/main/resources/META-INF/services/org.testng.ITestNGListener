@@ -1,3 +1,2 @@
-org.theduykh.ata.listener.AtaAllureMethodListener
 org.theduykh.ata.listener.AtaSuiteListener
 org.theduykh.ata.listener.AtaTestListener

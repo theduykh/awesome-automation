@@ -38,6 +38,27 @@
                     </dependency>
                 </dependencies>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.3.1</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>test-logs</directory>
+                        </fileset>
+                        <fileset>
+                            <directory>test-output</directory>
+                        </fileset>
+                        <fileset>
+                            <directory>allure-report</directory>
+                        </fileset>
+                        <fileset>
+                            <directory>allure-results</directory>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
     <dependencies>

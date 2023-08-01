@@ -55,7 +55,7 @@ src
  ┃ ┃ ┃ ┗ ProductPage.java
  ┃ ┃ ┣ stepdefinition
  ┃ ┃ ┃ ┗ AmazonStepDefinition.java
- ┃ ┃ ┗ CucumberRunner.java
+ ┃ ┃ ┗ RunCucumberTest.java
  ┃ ┗ resources
  ┃ ┃ ┣ features
  ┃ ┃ ┃ ┗ Amazon.feature

@@ -3,7 +3,7 @@
 <suite name="Amazon">
     <test verbose="2" preserve-order="true" name="Amazon">
         <classes>
-            <class name="CucumberRunner"/>
+            <class name="RunCucumberTest"/>
         </classes>
     </test>
 </suite>

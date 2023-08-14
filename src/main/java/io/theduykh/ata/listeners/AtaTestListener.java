@@ -1,8 +1,8 @@
-package org.theduykh.ata.listener;
+package io.theduykh.ata.listeners;
 
+import io.theduykh.ata.driver.AtaDriverManager;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-import org.theduykh.ata.driver.AtaDriverManager;
 
 public class AtaTestListener implements ITestListener {
 

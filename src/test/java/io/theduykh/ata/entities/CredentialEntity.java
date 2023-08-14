@@ -1,4 +1,4 @@
-package entities;
+package io.theduykh.ata.entities;
 
 import lombok.Builder;
 import lombok.Data;

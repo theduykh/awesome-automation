@@ -1,4 +1,4 @@
-package org.theduykh.ata.driver;
+package io.theduykh.ata.driver;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

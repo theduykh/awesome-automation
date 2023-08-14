@@ -1,4 +1,4 @@
-package org.theduykh.ata.driver;
+package io.theduykh.ata.driver;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

@@ -1,4 +1,4 @@
-package org.theduykh.ata.listener;
+package io.theduykh.ata.listeners;
 
 import org.testng.ISuite;
 import org.testng.ISuiteListener;

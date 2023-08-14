@@ -1,6 +1,6 @@
-package pages;
+package io.theduykh.ata.pages;
 
-import org.theduykh.ata.test.AtaPage;
+import io.theduykh.ata.test.AtaPage;
 
 public class CucumberLandingPage extends AtaPage {
 

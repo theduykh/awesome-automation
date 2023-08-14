@@ -1,7 +1,7 @@
-package org.theduykh.ata.test;
+package io.theduykh.ata.test;
 
-import org.theduykh.ata.driver.AtaDriver;
-import org.theduykh.ata.driver.AtaDriverManager;
+import io.theduykh.ata.driver.AtaDriver;
+import io.theduykh.ata.driver.AtaDriverManager;
 
 public abstract class AtaBase {
     protected AtaDriver I;

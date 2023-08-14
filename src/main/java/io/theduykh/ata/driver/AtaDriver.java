@@ -1,4 +1,4 @@
-package org.theduykh.ata.driver;
+package io.theduykh.ata.driver;
 
 import io.qameta.allure.Allure;
 import io.qameta.allure.Step;

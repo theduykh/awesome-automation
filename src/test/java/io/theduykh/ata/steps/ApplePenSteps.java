@@ -1,25 +1,25 @@
-package stepdefinition;
+package io.theduykh.ata.steps;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.theduykh.ata.test.AtaCucumberStepContext;
-import org.theduykh.ata.test.AtaCucumberStepDefinition;
+import io.theduykh.ata.test.AtaStepContext;
+import io.theduykh.ata.test.AtaStepDefinition;
 
-public class PenStepDefs extends AtaCucumberStepDefinition {
-    public PenStepDefs(AtaCucumberStepContext context) {
+public class ApplePenSteps extends AtaStepDefinition {
+    public ApplePenSteps(AtaStepContext context) {
         super(context);
     }
 
     @Given("I have a pen")
     public void iHaveAPen() {
-        System.out.println("I have a pen");
+        System.out.println("Pen...");
     }
 
     @And("I have an apple")
     public void iHaveAnApple() {
-        System.out.println("I have an apple");
+        System.out.println("Uhh");
     }
 
     @When("I ahh")

@@ -1,18 +1,18 @@
-package stepdefinition;
+package io.theduykh.ata.steps;
 
-import entities.CredentialEntity;
+import io.theduykh.ata.entities.CredentialEntity;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.theduykh.ata.pages.CucumberLandingPage;
+import io.theduykh.ata.pages.CucumberLoginPage;
 import org.testng.Assert;
-import org.theduykh.ata.test.AtaCucumberStepContext;
-import org.theduykh.ata.test.AtaCucumberStepDefinition;
-import pages.CucumberLandingPage;
-import pages.CucumberLoginPage;
+import io.theduykh.ata.test.AtaStepContext;
+import io.theduykh.ata.test.AtaStepDefinition;
 
-public class CucumberLoginStepDefs extends AtaCucumberStepDefinition {
-    public CucumberLoginStepDefs(AtaCucumberStepContext context) {
+public class LoginSteps extends AtaStepDefinition {
+    public LoginSteps(AtaStepContext context) {
         super(context);
     }
 

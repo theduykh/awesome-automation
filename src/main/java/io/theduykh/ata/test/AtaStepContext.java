@@ -1,9 +1,9 @@
-package org.theduykh.ata.test;
+package io.theduykh.ata.test;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class AtaCucumberStepContext {
+public class AtaStepContext {
     private final Map<String, Object> contextList = new HashMap<>();
 
     public Object getContext(String key) {

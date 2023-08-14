@@ -1,2 +1,2 @@
-org.theduykh.ata.listener.AtaSuiteListener
-org.theduykh.ata.listener.AtaTestListener
+io.theduykh.ata.listeners.AtaSuiteListener
+io.theduykh.ata.listeners.AtaTestListener

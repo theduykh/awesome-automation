@@ -1,7 +1,7 @@
-package pages;
+package io.theduykh.ata.pages;
 
-import entities.CredentialEntity;
-import org.theduykh.ata.test.AtaPage;
+import io.theduykh.ata.entities.CredentialEntity;
+import io.theduykh.ata.test.AtaPage;
 
 public class CucumberLoginPage extends AtaPage {
 

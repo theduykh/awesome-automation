@@ -1,13 +1,12 @@
 package io.theduykh.ata.steps;
 
-import io.theduykh.ata.entities.CredentialEntity;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.theduykh.ata.entities.CredentialEntity;
 import io.theduykh.ata.pages.CucumberLandingPage;
 import io.theduykh.ata.pages.CucumberLoginPage;
-import org.testng.Assert;
 import io.theduykh.ata.test.AtaStepContext;
 import io.theduykh.ata.test.AtaStepDefinition;
 
@@ -37,7 +36,6 @@ public class LoginSteps extends AtaStepDefinition {
 
     @Then("I see the error message {string}")
     public void iSeeTheErrorMessage(String expect) {
-        String message = new CucumberLoginPage().getErrorMessage();
-        Assert.assertEquals(message, expect);
+        I.see(expect);
     }
 }

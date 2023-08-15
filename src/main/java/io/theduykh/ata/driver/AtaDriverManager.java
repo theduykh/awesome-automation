@@ -1,16 +1,24 @@
 package io.theduykh.ata.driver;
 
+import io.theduykh.ata.utils.ConfigReader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class AtaDriverManager {
-    private static final Logger logger = LogManager.getLogger(AtaDriverManager.class);
-    protected static ThreadLocal<AtaDriver> threadDriver = new ThreadLocal<>();
+    private static final Logger logger = LogManager.getLogger();
+    private static final ThreadLocal<AtaDriver> threadDriver = new ThreadLocal<>();
 
     public static void init() {
-        threadDriver.set(new AtaDriver());
-        logger.debug("init thread driver");
-        threadDriver.get();
+        boolean dryRun = ConfigReader.getBoolean("dryrun");
+        AtaDriver driver;
+        if (dryRun) {
+            driver = new AtaDryRunDriver();
+            logger.debug("init thread driver for dry run");
+        } else {
+            driver = new AtaChromeDriver();
+            logger.debug("init thread driver");
+        }
+        threadDriver.set(driver);
     }
 
     public static void quit() {

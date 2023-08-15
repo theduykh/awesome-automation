@@ -1,7 +1,7 @@
 package io.theduykh.ata.test;
 
-import org.testng.annotations.BeforeMethod;
 import io.theduykh.ata.driver.AtaDriver;
+import org.testng.annotations.BeforeMethod;
 import io.theduykh.ata.driver.AtaDriverManager;
 
 public abstract class AtaTestNGRunner {

@@ -17,15 +17,15 @@ import java.io.ByteArrayInputStream;
 import java.time.Duration;
 import java.util.*;
 
-public class AtaChromeDriver implements AtaDriver {
+class AtaDriverImpl extends AtaDriver {
     private final Logger logger = LogManager.getLogger();
-    private final MutableCapabilities defaultCapabilities;
+    private final ChromeOptions defaultCapabilities;
     private WebDriver driver;
     private final Map<String, WebDriver> driverMap = new HashMap<>();
 
     private final long TIMEOUT = 10;
 
-    public AtaChromeDriver() {
+    public AtaDriverImpl() {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--window-size=1366,768");
         chromeOptions.addArguments("--disable-infobars");
@@ -40,21 +40,26 @@ public class AtaChromeDriver implements AtaDriver {
         driverMap.put("default", driver);
     }
 
-    public AtaChromeDriver(MutableCapabilities capabilities) {
+    public AtaDriverImpl(ChromeOptions capabilities) {
         this.defaultCapabilities = capabilities;
-        driver = new RemoteWebDriver(capabilities);
+        driver = new ChromeDriver(capabilities);
         driverMap.put("default", driver);
+    }
+
+    @Override
+    public WebDriver getWebDriver() {
+        return driver;
     }
 
     // region actions
     @Override
     @Step("session \"{0}\"")
-    public AtaChromeDriver session(String session) {
+    public AtaDriverImpl session(String session) {
         logger.debug("session " + session);
         if (driverMap.containsKey(session)) {
             driver = driverMap.get(session);
         } else {
-            driver = new RemoteWebDriver(defaultCapabilities);
+            driver = new ChromeDriver(defaultCapabilities);
             driverMap.put(session, driver);
         }
 
@@ -63,7 +68,7 @@ public class AtaChromeDriver implements AtaDriver {
 
     @Override
     @Step("session \"{0}\"")
-    public AtaChromeDriver session(String session, MutableCapabilities capabilities) {
+    public AtaDriverImpl session(String session, MutableCapabilities capabilities) {
         logger.debug("session " + session);
         if (driverMap.containsKey(session)) {
             driver = driverMap.get(session);
@@ -76,7 +81,7 @@ public class AtaChromeDriver implements AtaDriver {
 
     @Override
     @Step("navigate to \"{0}\"")
-    public AtaChromeDriver navigate(String url) {
+    public AtaDriverImpl navigate(String url) {
         logger.debug("navigate " + url);
         step(() -> driver.navigate().to(url));
         return this;
@@ -84,7 +89,7 @@ public class AtaChromeDriver implements AtaDriver {
 
     @Override
     @Step("fill \"{1}\" into \"{0}\"")
-    public AtaChromeDriver fillText(String locator, String text) {
+    public AtaDriverImpl fill(String locator, String text) {
         logger.debug("fill " + text + " into " + locator);
         step(() -> findElement(locator).sendKeys(text));
         return this;
@@ -92,7 +97,7 @@ public class AtaChromeDriver implements AtaDriver {
 
     @Override
     @Step("click \"{0}\"")
-    public AtaChromeDriver click(String locator) {
+    public AtaDriverImpl click(String locator) {
         logger.debug("click " + locator);
         step(() -> {
             By parsedLocator = parseLocator(locator);
@@ -105,7 +110,7 @@ public class AtaChromeDriver implements AtaDriver {
 
     @Override
     @Step("select by visible text \"{0}\" \"{1}\"")
-    public AtaChromeDriver selectByVisibleText(String locator, String text) {
+    public AtaDriverImpl selectByVisibleText(String locator, String text) {
         logger.debug("select by visible text " + locator);
         step(() -> {
             Select select = new Select(findElement(locator));
@@ -116,7 +121,7 @@ public class AtaChromeDriver implements AtaDriver {
 
     @Override
     @Step("select by value \"{0}\" \"{1}\"")
-    public AtaChromeDriver selectByValue(String locator, String value) {
+    public AtaDriverImpl selectByValue(String locator, String value) {
         logger.debug("select by value " + locator);
         step(() -> {
             Select select = new Select(findElement(locator));
@@ -127,7 +132,7 @@ public class AtaChromeDriver implements AtaDriver {
 
     @Override
     @Step("see text \"{0}\"")
-    public AtaChromeDriver see(String text) {
+    public AtaDriverImpl see(String text) {
         logger.debug("see " + text);
         step(() -> {
             Assert.assertTrue(isElementVisible("//*[contains(.,'" + text + "')]"));
@@ -136,14 +141,12 @@ public class AtaChromeDriver implements AtaDriver {
     }
 
     @Override
-    @Step("see element \"{0}\"")
-    public AtaValidation see(By locator) {
-        logger.debug("see " + locator);
-        return new AtaValidation(driver, locator);
+    public AtaValidation expect(String locator) {
+        return new AtaValidationImpl(this, locator);
     }
 
     @Override
-    public AtaChromeDriver waitFor(long time) {
+    public AtaDriverImpl waitFor(long time) {
         try {
             Thread.sleep(time);
         } catch (InterruptedException e) {
@@ -223,4 +226,13 @@ public class AtaChromeDriver implements AtaDriver {
         }
     }
 
+    @Override
+    protected boolean isDisplayed(String locator) {
+        return false;
+    }
+
+    @Override
+    protected boolean isEnabled(String locator) {
+        return false;
+    }
 }

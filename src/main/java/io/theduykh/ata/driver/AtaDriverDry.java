@@ -1,13 +1,18 @@
 package io.theduykh.ata.driver;
 
 import io.qameta.allure.Step;
-import org.openqa.selenium.By;
 import org.openqa.selenium.MutableCapabilities;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class AtaDryRunDriver implements AtaDriver {
+class AtaDriverDry extends AtaDriver {
+
+    @Override
+    public WebDriver getWebDriver() {
+        return null;
+    }
 
     @Override
     @Step("session \"{0}\"")
@@ -29,7 +34,7 @@ public class AtaDryRunDriver implements AtaDriver {
 
     @Override
     @Step("fill \"{1}\" into \"{0}\"")
-    public AtaDriver fillText(String locator, String text) {
+    public AtaDriver fill(String locator, String text) {
         return null;
     }
 
@@ -58,19 +63,13 @@ public class AtaDryRunDriver implements AtaDriver {
     }
 
     @Override
-    @Step("see element \"{0}\"")
-    public AtaValidation see(By locator) {
-        return null;
+    public AtaValidation expect(String locator) {
+        return new AtaValidationDry(this, locator);
     }
 
     @Override
     public AtaDriver waitFor(long time) {
         return null;
-    }
-
-    @Override
-    public void quit() {
-
     }
 
     @Override
@@ -87,5 +86,21 @@ public class AtaDryRunDriver implements AtaDriver {
     @Override
     public List<WebElement> findElements(String locator) {
         return null;
+    }
+
+
+    @Override
+    public void quit() {
+
+    }
+
+    @Override
+    protected boolean isDisplayed(String locator) {
+        return false;
+    }
+
+    @Override
+    protected boolean isEnabled(String locator) {
+        return false;
     }
 }

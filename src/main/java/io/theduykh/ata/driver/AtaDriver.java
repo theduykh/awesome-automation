@@ -1,38 +1,43 @@
 package io.theduykh.ata.driver;
 
-import org.openqa.selenium.By;
+import io.qameta.allure.Step;
 import org.openqa.selenium.MutableCapabilities;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public interface AtaDriver {
+public abstract class AtaDriver {
+    protected abstract boolean isDisplayed(String locator);
+    protected abstract boolean isEnabled(String locator);
 
-    AtaDriver session(String session);
+    public abstract WebDriver getWebDriver();
 
-    AtaDriver session(String session, MutableCapabilities capabilities);
+    public abstract AtaDriver session(String session);
 
-    AtaDriver navigate(String url);
+    public abstract AtaDriver session(String session, MutableCapabilities capabilities);
 
-    AtaDriver fillText(String locator, String text);
+    public abstract AtaDriver navigate(String url);
 
-    AtaDriver click(String locator);
+    public abstract AtaDriver fill(String locator, String text);
 
-    AtaDriver selectByVisibleText(String locator, String text);
+    public abstract AtaDriver click(String locator);
 
-    AtaDriver selectByValue(String locator, String value);
+    public abstract AtaDriver selectByVisibleText(String locator, String text);
 
-    AtaDriver see(String message);
+    public abstract AtaDriver selectByValue(String locator, String value);
 
-    AtaValidation see(By locator);
+    public abstract AtaDriver see(String message);
 
-    AtaDriver waitFor(long time);
+    public abstract AtaValidation expect(String locator);
 
-    void quit();
+    public abstract AtaDriver waitFor(long time);
 
-    String getText(String locator);
+    public abstract void quit();
 
-    WebElement findElement(String locator);
+    public abstract String getText(String locator);
 
-    List<WebElement> findElements(String locator);
+    public abstract WebElement findElement(String locator);
+
+    public abstract List<WebElement> findElements(String locator);
 }

@@ -1,6 +1,6 @@
 package io.theduykh.ata.driver;
 
-import io.theduykh.ata.utils.ConfigReader;
+import io.theduykh.ata.config.ConfigReader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.chrome.ChromeOptions;

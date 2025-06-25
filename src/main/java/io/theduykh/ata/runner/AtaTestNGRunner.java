@@ -1,4 +1,4 @@
-package io.theduykh.ata.test;
+package io.theduykh.ata.runner;
 
 import io.theduykh.ata.driver.AtaDriver;
 import org.testng.annotations.BeforeMethod;

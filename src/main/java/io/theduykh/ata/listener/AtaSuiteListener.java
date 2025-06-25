@@ -1,6 +1,6 @@
-package io.theduykh.ata.listeners;
+package io.theduykh.ata.listener;
 
-import io.theduykh.ata.utils.ConfigReader;
+import io.theduykh.ata.config.ConfigReader;
 import org.testng.ISuite;
 import org.testng.ISuiteListener;
 

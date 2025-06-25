@@ -1,6 +1,7 @@
 package io.theduykh.ata;
 
 import io.cucumber.testng.CucumberOptions;
+import io.theduykh.ata.runner.AtaRunCucumberTest;
 
 @CucumberOptions(
         features = "src/test/resources/features",

@@ -1,7 +1,7 @@
-package io.theduykh.ata;
+package io.theduykh.ata.runner;
 
 import io.cucumber.testng.AbstractTestNGCucumberTests;
-import io.theduykh.ata.utils.ConfigReader;
+import io.theduykh.ata.config.ConfigReader;
 import org.testng.annotations.DataProvider;
 
 import java.io.IOException;

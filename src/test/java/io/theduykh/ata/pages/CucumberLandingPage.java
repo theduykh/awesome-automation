@@ -10,6 +10,6 @@ public class CucumberLandingPage extends AtaPage {
     }
 
     public void clickLoginBtn() {
-        I.click(".nav-item-login a");
+        I.click("a[href=\"/docs\"]");
     }
 }

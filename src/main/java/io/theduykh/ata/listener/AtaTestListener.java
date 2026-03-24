@@ -1,4 +1,4 @@
-package io.theduykh.ata.listeners;
+package io.theduykh.ata.listener;
 
 import io.theduykh.ata.driver.AtaDriverManager;
 import org.testng.ITestListener;

@@ -1,4 +1,4 @@
-package io.theduykh.ata.utils;
+package io.theduykh.ata.config;
 
 import com.google.common.io.Resources;
 
